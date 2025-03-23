@@ -8,14 +8,37 @@ def solution():
     L1 = float(input("请输入已知机构参数(杆1):"))
     L2 = float(input("请输入已知机构参数(杆2):"))
     L3 = float(input("请输入已知机构参数(杆3):"))
+    min_bar = min([L1, L2, L3])
+    max_bar = max([L1, L2, L3])
+    sum_bar = L1 + L2 + L3
     Lx_detect=input("未知杆是不是机架??")
     if(Lx_detect=='yes'):
-        print("机架为Lx")
-        print("机架就是最短杆,必然是双曲柄机构")
+        print("若机架为Lx")
+        print("机架长度<"+str(min_bar)+",必然满足Grashof条件,由于最短杆是机架,必然是双曲柄机构")
+        print("若机架不为Lx")
+        framer=input("确定你的机架的对向杆是哪个杆子?L1,L2,L3?")
+        if framer=='L1':
+            if L1==min_bar:
+                print("机架为Lx,对向杆为L1")
+                print("机架在最短杆的对面,必然是双摇杆机构")
+            if L1!=min_bar:
+                print("机架为Lx,对向杆为L1")
+                print("机架在最短杆的侧面,必然是曲柄摇杆机构")
+        if framer=='L2':
+            if L2==min_bar:
+                print("机架为Lx,对向杆为L2")
+                print("机架在最短杆的对面,必然是双摇杆机构")
+            if L2!=min_bar:
+                print("机架为Lx,对向杆为L2")
+                print("机架在最短杆的侧面,必然是曲柄摇杆机构")
+        if framer=='L3':
+            if L3==min_bar:
+                print("机架为Lx,对向杆为L3")
+                print("机架在最短杆的对面,必然是双摇杆机构")
+            if L3!=min_bar:
+                print("机架为Lx,对向杆为L3")
+                print("机架在最短杆的侧面,必然是曲柄摇杆机构")
     if(Lx_detect=='no'):
-        min_bar = min([L1, L2, L3])
-        max_bar = max([L1, L2, L3])
-        sum_bar = L1 + L2 + L3
         Lx_bi = sum_bar - 2 * max_bar
         Lx_short_max = min(min_bar, Lx_bi)
         if(Lx_short_max>0):
@@ -49,7 +72,7 @@ def solution():
                     print("机架在最短杆的侧面,必然是曲柄摇杆机构")
         if(Lx_short_max<=0):
             print("Lx为最短杆子时,必然满足Grashof条件,亦即必然有曲柄机构")
-        print("当Lx介乎最短杆和最长杆子之间时:")
+        
         
         
     
